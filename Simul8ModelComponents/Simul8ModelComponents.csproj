@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{912927E8-7A82-445D-B51B-0868673ACD5D}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Simul8ModelComponents</RootNamespace>
+    <AssemblyName>Simul8ModelComponents</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IVariableDetailsView.cs" />
+    <Compile Include="ModelRunList.cs" />
+    <Compile Include="ModelRunList.Designer.cs">
+      <DependentUpon>ModelRunList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelSummaryView.cs" />
+    <Compile Include="ModelSummaryView.Designer.cs">
+      <DependentUpon>ModelSummaryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resource1.Designer.cs">
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+    <Compile Include="S8Spreadsheet.cs" />
+    <Compile Include="SheetView.cs" />
+    <Compile Include="SheetView.Designer.cs">
+      <DependentUpon>SheetView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Simul8Runner.cs" />
+    <Compile Include="VariableXMLWriter.cs" />
+    <Compile Include="Simul8XMLReader.cs" />
+    <Compile Include="Simul8XMLWriter.cs" />
+    <Compile Include="SpreadSheetRow.cs" />
+    <Compile Include="VariableDetailsView.cs" />
+    <Compile Include="VariableDetailsView.Designer.cs">
+      <DependentUpon>VariableDetailsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VariableGrid.cs" />
+    <Compile Include="VariableGrid.Designer.cs">
+      <DependentUpon>VariableGrid.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ModelRunList.resx">
+      <DependentUpon>ModelRunList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModelSummaryView.resx">
+      <DependentUpon>ModelSummaryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SheetView.resx">
+      <DependentUpon>SheetView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VariableDetailsView.resx">
+      <DependentUpon>VariableDetailsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VariableGrid.resx">
+      <DependentUpon>VariableGrid.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="SIMUL8">
+      <Guid>{12A2F4C6-F594-11D2-8B01-00A024AE8FC8}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GenericSimulationComponents\GenericSimulationComponents.csproj">
+      <Project>{261A2E09-5F48-45B2-9232-D7EFDE960AB6}</Project>
+      <Name>GenericSimulationComponents</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+</Project>

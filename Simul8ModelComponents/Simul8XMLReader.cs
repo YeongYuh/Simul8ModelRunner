@@ -1,0 +1,127 @@
+﻿/*
+ * Created by SharpDevelop.
+ * User: tm300
+ * Date: 16/06/2011
+ * Time: 10:44
+ * 
+ * To change this template use Tools | Options | Coding | Edit Standard Headers.
+ */
+using System;
+using System.Collections.Generic;
+using System.Xml.Linq;
+using System.Linq;
+
+using GenericSimulationComponents;
+
+namespace Simul8ModelComponents
+{
+	/// <summary>
+	/// Reads model data from a Simul8 xml file.
+	/// </summary>
+	public class Simul8XMLReader : IModelReader
+	{
+		private XElement model;
+
+		public Simul8XMLReader(string modelFileName)
+		{
+			this.model = XElement.Load(modelFileName);
+		}
+		
+		public bool IsLoaded{
+			get{
+				return this.model.HasElements;
+			}
+		}
+
+
+		/// <summary>
+		/// All of the variables contained within the simulation model
+		/// </summary>
+		/// <returns>A list of the Variables</returns>
+		public List<Variable> ReadVariables(){
+
+			var theList = GetNormalVariables();
+			theList.InsertRange(theList.Count - 1, GetSpreadSheetVariables());
+			
+			return theList;
+		}
+
+
+		private List<Variable> GetSpreadSheetVariables(){
+			
+			var variables = model.Descendants("Variable").Where(s => s.Attribute("Type").Value == "4").Select(s => new Variable {
+				Name = s.Attribute("Name").Value,
+				ID = s.Attribute("ID").Value,
+				Notes = (string)s.Element("Notes") ?? "",
+				PackageVariableType = (VariableType)Convert.ToInt32(s.Attribute("Type").Value),
+				Value = new S8Spreadsheet { 
+					RowCount = (int?)s.Element("Rows") ?? 0,
+					ColCount = (int?)s.Element("Cols") ?? 0,
+					Cells = (from c in s.Descendants("Cell")
+					select new S8Spreadsheet.Cell {
+						Row = Convert.ToInt32(c.Attribute("Row").Value),
+						Col = Convert.ToInt32(c.Attribute("Col").Value),
+						CellType = (VariableType)Convert.ToInt32(c.Attribute("Type").Value),
+						Value = c.Value
+					}).ToList<S8Spreadsheet.Cell>() }
+			});
+			
+			return variables.ToList<Variable>();
+		}
+		
+		private List<Variable> GetNormalVariables(){
+			
+			var variables = from v in model.Descendants("Variable")
+				where v.Attribute("Type").Value != "4"
+				select new Variable {
+				ID = v.Attribute("ID").Value,
+				Name = v.Attribute("Name").Value,
+				PackageVariableType = (VariableType)Convert.ToInt32(v.Attribute("Type").Value),
+				Value = (string)v.Element("Value") ?? "",
+				ResetValue = (string)v.Element("ResetValue") ?? "",
+				Notes = (string)v.Element("Notes") ?? ""
+
+			};
+			
+			return variables.ToList<Variable>();
+		}
+		
+		private object ConvertToType(VariableType type, string value)
+		{
+
+			if (type == VariableType.Number) {
+				return (object)Convert.ToInt32(value);
+			} else if (type == VariableType.Text) {
+				return (object)value;
+			} else {
+				return (object)(new S8Spreadsheet());
+			}
+
+
+		}
+
+
+		
+		/// <summary>
+		/// Returns the number of replications specified in the Simul8 file
+		/// </summary>
+		/// <returns></returns>
+		public int ReadReplications(){
+			
+			var replications = this.model.Descendants("Runs").FirstOrDefault().Value;
+			return Convert.ToInt32(replications);
+		}
+		
+		/// <summary>
+		/// Returns the run length of the simulation model.
+		/// Throws a NullReferenceException if the element in not found
+		/// </summary>
+		/// <returns></returns>
+		public double ReadRunLength(){
+			
+			var runLength = this.model.Descendants("ResultsCollectionPeriod").FirstOrDefault().Value;
+			return Convert.ToDouble(runLength);
+			
+		}
+}
+}

@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 4.0.0.7070
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simul8ModelViewer", "Simul8ModelViewer\Simul8ModelViewer.csproj", "{67674EB5-3A83-4901-B4AA-BF475CD1E890}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simul8ModelComponents", "Simul8ModelComponents\Simul8ModelComponents.csproj", "{912927E8-7A82-445D-B51B-0868673ACD5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericSimulationComponents", "GenericSimulationComponents\GenericSimulationComponents.csproj", "{261A2E09-5F48-45B2-9232-D7EFDE960AB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67674EB5-3A83-4901-B4AA-BF475CD1E890}.Debug|x86.Build.0 = Debug|x86
+		{67674EB5-3A83-4901-B4AA-BF475CD1E890}.Debug|x86.ActiveCfg = Debug|x86
+		{67674EB5-3A83-4901-B4AA-BF475CD1E890}.Release|x86.Build.0 = Release|x86
+		{67674EB5-3A83-4901-B4AA-BF475CD1E890}.Release|x86.ActiveCfg = Release|x86
+		{912927E8-7A82-445D-B51B-0868673ACD5D}.Debug|x86.Build.0 = Debug|x86
+		{912927E8-7A82-445D-B51B-0868673ACD5D}.Debug|x86.ActiveCfg = Debug|x86
+		{912927E8-7A82-445D-B51B-0868673ACD5D}.Release|x86.Build.0 = Release|x86
+		{912927E8-7A82-445D-B51B-0868673ACD5D}.Release|x86.ActiveCfg = Release|x86
+		{261A2E09-5F48-45B2-9232-D7EFDE960AB6}.Debug|x86.Build.0 = Debug|x86
+		{261A2E09-5F48-45B2-9232-D7EFDE960AB6}.Debug|x86.ActiveCfg = Debug|x86
+		{261A2E09-5F48-45B2-9232-D7EFDE960AB6}.Release|x86.Build.0 = Release|x86
+		{261A2E09-5F48-45B2-9232-D7EFDE960AB6}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+EndGlobal
