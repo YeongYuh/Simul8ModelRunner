@@ -49,11 +49,12 @@ namespace Simul8ModelViewer
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutSimRunnerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.modelRunList1 = new Simul8ModelComponents.ModelRunList();
-			this.modelSummaryView1 = new Simul8ModelComponents.ModelSummaryView();
-			this.variableGrid1 = new Simul8ModelComponents.VariableGrid();
-			this.variableDetailsView1 = new Simul8ModelComponents.VariableDetailsView();
 			this.sheetView1 = new Simul8ModelComponents.SheetView();
+			this.variableDetailsView1 = new Simul8ModelComponents.VariableDetailsView();
+			this.variableGrid1 = new Simul8ModelComponents.VariableGrid();
+			this.modelSummaryView1 = new Simul8ModelComponents.ModelSummaryView();
+			this.modelRunList1 = new Simul8ModelComponents.ModelRunList();
+			this.scenarioList1 = new Simul8ModelComponents.ScenarioList();
 			this.statusStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.panel1.SuspendLayout();
@@ -82,7 +83,7 @@ namespace Simul8ModelViewer
 									this.toolStripProgressBar1});
 			this.statusStrip1.Location = new System.Drawing.Point(0, 666);
 			this.statusStrip1.Name = "statusStrip1";
-			this.statusStrip1.Size = new System.Drawing.Size(1277, 22);
+			this.statusStrip1.Size = new System.Drawing.Size(1284, 22);
 			this.statusStrip1.TabIndex = 5;
 			this.statusStrip1.Text = "statusStrip1";
 			// 
@@ -105,7 +106,7 @@ namespace Simul8ModelViewer
 									this.helpToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(1277, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(1284, 24);
 			this.menuStrip1.TabIndex = 15;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -159,50 +160,10 @@ namespace Simul8ModelViewer
 			this.panel1.Controls.Add(this.variableGrid1);
 			this.panel1.Controls.Add(this.modelSummaryView1);
 			this.panel1.Controls.Add(this.modelRunList1);
-			this.panel1.Location = new System.Drawing.Point(0, 27);
+			this.panel1.Location = new System.Drawing.Point(199, 27);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(1265, 583);
+			this.panel1.Size = new System.Drawing.Size(1124, 583);
 			this.panel1.TabIndex = 17;
-			// 
-			// modelRunList1
-			// 
-			this.modelRunList1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-									| System.Windows.Forms.AnchorStyles.Left)));
-			this.modelRunList1.Location = new System.Drawing.Point(3, 3);
-			this.modelRunList1.Name = "modelRunList1";
-			this.modelRunList1.Size = new System.Drawing.Size(328, 577);
-			this.modelRunList1.TabIndex = 0;
-			// 
-			// modelSummaryView1
-			// 
-			this.modelSummaryView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-									| System.Windows.Forms.AnchorStyles.Right)));
-			this.modelSummaryView1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-			this.modelSummaryView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.modelSummaryView1.Location = new System.Drawing.Point(337, 3);
-			this.modelSummaryView1.Name = "modelSummaryView1";
-			this.modelSummaryView1.Size = new System.Drawing.Size(919, 96);
-			this.modelSummaryView1.TabIndex = 1;
-			// 
-			// variableGrid1
-			// 
-			this.variableGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-									| System.Windows.Forms.AnchorStyles.Right)));
-			this.variableGrid1.LinkedVariableDetailsView = null;
-			this.variableGrid1.Location = new System.Drawing.Point(337, 105);
-			this.variableGrid1.Name = "variableGrid1";
-			this.variableGrid1.Size = new System.Drawing.Size(919, 153);
-			this.variableGrid1.TabIndex = 2;
-			// 
-			// variableDetailsView1
-			// 
-			this.variableDetailsView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-									| System.Windows.Forms.AnchorStyles.Right)));
-			this.variableDetailsView1.Location = new System.Drawing.Point(337, 264);
-			this.variableDetailsView1.Name = "variableDetailsView1";
-			this.variableDetailsView1.SelectedVariable = null;
-			this.variableDetailsView1.Size = new System.Drawing.Size(919, 79);
-			this.variableDetailsView1.TabIndex = 3;
 			// 
 			// sheetView1
 			// 
@@ -212,15 +173,63 @@ namespace Simul8ModelViewer
 			this.sheetView1.Location = new System.Drawing.Point(337, 349);
 			this.sheetView1.Name = "sheetView1";
 			this.sheetView1.SelectedVariable = null;
-			this.sheetView1.Size = new System.Drawing.Size(919, 218);
+			this.sheetView1.Size = new System.Drawing.Size(778, 218);
 			this.sheetView1.TabIndex = 4;
+			// 
+			// variableDetailsView1
+			// 
+			this.variableDetailsView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+									| System.Windows.Forms.AnchorStyles.Right)));
+			this.variableDetailsView1.Location = new System.Drawing.Point(337, 264);
+			this.variableDetailsView1.Name = "variableDetailsView1";
+			this.variableDetailsView1.SelectedVariable = null;
+			this.variableDetailsView1.Size = new System.Drawing.Size(778, 79);
+			this.variableDetailsView1.TabIndex = 3;
+			// 
+			// variableGrid1
+			// 
+			this.variableGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+									| System.Windows.Forms.AnchorStyles.Right)));
+			this.variableGrid1.LinkedVariableDetailsView = null;
+			this.variableGrid1.Location = new System.Drawing.Point(337, 105);
+			this.variableGrid1.Name = "variableGrid1";
+			this.variableGrid1.Size = new System.Drawing.Size(778, 153);
+			this.variableGrid1.TabIndex = 2;
+			// 
+			// modelSummaryView1
+			// 
+			this.modelSummaryView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+									| System.Windows.Forms.AnchorStyles.Right)));
+			this.modelSummaryView1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+			this.modelSummaryView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.modelSummaryView1.Location = new System.Drawing.Point(337, 3);
+			this.modelSummaryView1.Name = "modelSummaryView1";
+			this.modelSummaryView1.Size = new System.Drawing.Size(778, 96);
+			this.modelSummaryView1.TabIndex = 1;
+			// 
+			// modelRunList1
+			// 
+			this.modelRunList1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+									| System.Windows.Forms.AnchorStyles.Left)));
+			this.modelRunList1.Location = new System.Drawing.Point(37, 3);
+			this.modelRunList1.Name = "modelRunList1";
+			this.modelRunList1.Size = new System.Drawing.Size(294, 577);
+			this.modelRunList1.TabIndex = 0;
+			// 
+			// scenarioList1
+			// 
+			this.scenarioList1.Location = new System.Drawing.Point(0, 27);
+			this.scenarioList1.Name = "scenarioList1";
+			this.scenarioList1.Size = new System.Drawing.Size(230, 567);
+			this.scenarioList1.TabIndex = 18;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-			this.ClientSize = new System.Drawing.Size(1277, 688);
+			this.ClientSize = new System.Drawing.Size(1284, 688);
+			this.Controls.Add(this.scenarioList1);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.statusStrip1);
 			this.Controls.Add(this.menuStrip1);
@@ -237,6 +246,7 @@ namespace Simul8ModelViewer
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private Simul8ModelComponents.ScenarioList scenarioList1;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.ToolStripMenuItem aboutSimRunnerToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;

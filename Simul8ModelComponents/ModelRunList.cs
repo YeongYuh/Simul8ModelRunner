@@ -16,6 +16,7 @@ using GenericSimulationComponents;
 namespace Simul8ModelComponents
 {
 	public delegate void ModelSelectedHandler(object sender, ModelSelectedEventArgs args);
+	public delegate void ModelRemovedFromScenarioHandler(object sender, ModelSelectedEventArgs args);
 	
 	public class ModelSelectedEventArgs : EventArgs{
 		public ModelMetaClass SelectedModel{get;set;}
@@ -39,6 +40,7 @@ namespace Simul8ModelComponents
 		public ModelSelectedHandler OnModelSelected;
 		public SimulationCompleteHandler OnAllSimulationsComplete;
 		public SimulationCompleteHandler OnModelRunComplete;
+		public ModelRemovedFromScenarioHandler OnModelRemoved;
 		
 		public ModelRunList()
 		{
@@ -73,6 +75,21 @@ namespace Simul8ModelComponents
 			}
 		}
 		
+		
+		public void NewScenarioSelected(object sender, ScenarioEventArgs  args){
+			this.bindingSource1.Clear();
+			
+			foreach(ModelMetaClass model in args.SelectedScenario.Models){
+				this.bindingSource1.Add(model);
+			}
+			
+		}
+		
+		
+		public void RunScenario(object sender, ScenarioEventArgs args){
+			this.NewScenarioSelected(this, args);
+			this.RunModels();
+		}
 		
 		/// <summary>
 		/// Runs the simulation model
@@ -156,8 +173,18 @@ namespace Simul8ModelComponents
 		int RemoveSelectedModel()
 		{
 			int index = this.dataGridView1.SelectedCells[0].RowIndex;
+			var toRemove = (ModelMetaClass)this.bindingSource1[index];
 			this.bindingSource1.RemoveAt(index);
+			BroadcastModelRemoved(ref index, toRemove);
+			
 			return index;
+		}
+
+		void BroadcastModelRemoved(ref int index, ModelMetaClass toRemove)
+		{
+			if (null != this.OnModelRemoved) {
+				this.OnModelRemoved(this, new ModelSelectedEventArgs { SelectedModel = toRemove });
+			}
 		}
 
 		void SelectNextModelInList(int index)
@@ -174,8 +201,6 @@ namespace Simul8ModelComponents
 			int index = this.dataGridView1.SelectedCells[0].RowIndex;
 			
 			if(index > 0){
-				
-				
 				
 				
 			}

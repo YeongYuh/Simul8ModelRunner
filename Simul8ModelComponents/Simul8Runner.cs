@@ -29,11 +29,11 @@ namespace Simul8ModelComponents
 		public void RunMultipleReplications(string fileName, int replications)
 		{
 			s8 = new S8SimulationClass();
-			s8.Visible = true;
+			s8.Visible = false;
 			
 			HookupDelegates(s8);
 			
-			Console.Write("Opening Simul8 model: {0}", fileName);
+			Console.WriteLine("Opening Simul8 model: {0}", fileName);
 			s8.Open(fileName);
 			s8.TrialSim(replications,false);
 			

@@ -61,6 +61,14 @@
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
     <Compile Include="S8Spreadsheet.cs" />
+    <Compile Include="ScenarioDetailsView.cs" />
+    <Compile Include="ScenarioDetailsView.Designer.cs">
+      <DependentUpon>ScenarioDetailsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScenarioList.cs" />
+    <Compile Include="ScenarioList.Designer.cs">
+      <DependentUpon>ScenarioList.cs</DependentUpon>
+    </Compile>
     <Compile Include="SheetView.cs" />
     <Compile Include="SheetView.Designer.cs">
       <DependentUpon>SheetView.cs</DependentUpon>
@@ -88,6 +96,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScenarioDetailsView.resx">
+      <DependentUpon>ScenarioDetailsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScenarioList.resx">
+      <DependentUpon>ScenarioList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SheetView.resx">
       <DependentUpon>SheetView.cs</DependentUpon>

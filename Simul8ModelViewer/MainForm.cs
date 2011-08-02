@@ -42,6 +42,11 @@ namespace Simul8ModelViewer
 			this.modelRunList1.OnModelSelected += this.variableGrid1.ModelSelected;
 			this.modelRunList1.OnModelSelected += this.modelSummaryView1.ModelSelected;
 			this.modelRunList1.OnModelRunComplete += this.Update;
+		
+			this.modelRunList1.OnModelRemoved += this.scenarioList1.ModelRemoved;
+			
+			this.scenarioList1.OnScenarioSelected += this.modelRunList1.NewScenarioSelected;
+			this.scenarioList1.OnRunScenario += this.modelRunList1.RunScenario;
 			
 		}
 		

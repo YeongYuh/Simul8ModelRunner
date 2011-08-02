@@ -38,6 +38,15 @@ namespace GenericSimulationComponents
 			}
 		}
 		
+		public string OutputFileName{
+			get{
+				return this.Writer.OutputFileName;
+			}
+			set{
+				this.Writer.OutputFileName = value;
+			}
+		}
+		
 		public bool IsLoaded{
 			get{
 				return this.loaded;
@@ -107,7 +116,6 @@ namespace GenericSimulationComponents
 			}
 		}
 		
-		
 		/// <summary>
 		/// Run the simulation model using the number of replications 
 		/// </summary>
@@ -129,6 +137,8 @@ namespace GenericSimulationComponents
 			this.Writer.Model = this;
 			this.Writer.Write();
 		}
+		
+	
 		
 	}
 }

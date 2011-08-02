@@ -16,7 +16,7 @@ namespace GenericSimulationComponents
 	public interface IModelWriter
 	{
 		ModelMetaClass Model{get;set;}
-		string OutputFileName {get;}
+		string OutputFileName {get;set;}
 		void Write();
 	}
 }

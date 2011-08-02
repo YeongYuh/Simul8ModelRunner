@@ -53,6 +53,7 @@
     <Compile Include="IModelWriter.cs" />
     <Compile Include="ModelMetaClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenario.cs" />
     <Compile Include="Variable.cs" />
   </ItemGroup>
   <ItemGroup>

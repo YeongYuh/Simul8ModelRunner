@@ -79,11 +79,10 @@ namespace Simul8ModelComponents
 		
 		void SaveModifiedModel()
 		{
-			string outputPath = Model.FileName.Substring(0, this.Model.FileName.LastIndexOf("\\"));
-			//File.Create(string.Concat(outputPath, "modified_", Model.ModelName));
-			this.OutputFileName = string.Concat(outputPath, "\\modified_", Model.ModelName);
+			//string outputPath = Model.FileName.Substring(0, this.Model.FileName.LastIndexOf("\\"));
+			//this.OutputFileName = string.Concat(outputPath, "\\modified_", Model.ModelName);
 			this.modelXML.Save(this.OutputFileName);
-			//this.modelXML.Save("C:\\modified.xml");
+			
 		}
 
 	}
