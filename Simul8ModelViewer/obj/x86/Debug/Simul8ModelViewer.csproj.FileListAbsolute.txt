@@ -11,5 +11,6 @@
 \\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelViewer\obj\x86\Debug\GenerateResource.write.0.tlog
 \\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelViewer\obj\x86\Debug\Simul8ModelViewer.exe
 \\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelViewer\obj\x86\Debug\Simul8ModelViewer.pdb
+\\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelViewer\obj\x86\Debug\Simul8ModelViewer.MultipleUpdateDialog.resources
 \\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelViewer\obj\x86\Debug\GenerateResource.read.1.tlog
 \\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelViewer\obj\x86\Debug\GenerateResource.write.1.tlog

@@ -74,6 +74,7 @@
       <DependentUpon>SheetView.cs</DependentUpon>
     </Compile>
     <Compile Include="Simul8Runner.cs" />
+    <Compile Include="SpreadsheetVariableUpdater.cs" />
     <Compile Include="VariableXMLWriter.cs" />
     <Compile Include="Simul8XMLReader.cs" />
     <Compile Include="Simul8XMLWriter.cs" />

@@ -9,6 +9,8 @@
 \\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelComponents\obj\x86\Debug\Simul8ModelComponents.ModelSelectedEventArgs.resources
 \\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelComponents\obj\x86\Debug\Simul8ModelComponents.ModelSummaryView.resources
 \\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelComponents\obj\x86\Debug\Simul8ModelComponents.Properties.Resource1.resources
+\\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelComponents\obj\x86\Debug\Simul8ModelComponents.ScenarioDetailsView.resources
+\\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelComponents\obj\x86\Debug\Simul8ModelComponents.ScenarioList.resources
 \\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelComponents\obj\x86\Debug\Simul8ModelComponents.SheetView.resources
 \\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelComponents\obj\x86\Debug\Simul8ModelComponents.VariableDetailsView.resources
 \\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelComponents\obj\x86\Debug\Simul8ModelComponents.VariableGridEventArgs.resources
@@ -16,8 +18,4 @@
 \\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelComponents\obj\x86\Debug\GenerateResource.write.1.tlog
 \\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelComponents\obj\x86\Debug\Simul8ModelComponents.dll
 \\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelComponents\obj\x86\Debug\Simul8ModelComponents.pdb
-\\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelComponents\obj\x86\Debug\Simul8ModelComponents.ScenarioDetailsView.resources
-\\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelComponents\obj\x86\Debug\GenerateResource.read.0.tlog
-\\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelComponents\obj\x86\Debug\GenerateResource.write.0.tlog
 \\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelComponents\obj\x86\Debug\GenerateResource.read.2.tlog
-\\isad.isadroot.ex.ac.uk\uoe\user\Simul8ModelRunner\Simul8ModelComponents\obj\x86\Debug\Simul8ModelComponents.ScenarioList.resources

@@ -47,10 +47,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonVariableFinder.cs" />
+    <Compile Include="DefaultVariableUpdater.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="IModelReader.cs" />
     <Compile Include="IModelRunner.cs" />
     <Compile Include="IModelWriter.cs" />
+    <Compile Include="IVariableUpdater.cs" />
     <Compile Include="ModelMetaClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scenario.cs" />

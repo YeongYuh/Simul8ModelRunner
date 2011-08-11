@@ -10,6 +10,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+using System.Runtime.Serialization;
+
 using GenericSimulationComponents;
 
 namespace Simul8ModelComponents
@@ -19,7 +21,8 @@ namespace Simul8ModelComponents
 	/// Simul8 internal spreadsheets
 	/// A very simple collection of strings organised by rows and cols
 	/// </summary>
-	public class S8Spreadsheet : IEnumerable
+	[Serializable]
+	public class S8Spreadsheet : IEnumerable, ICloneable 
 	{
 		public int RowCount{get;set;}
 		public int ColCount{get;set;}
@@ -114,6 +117,21 @@ namespace Simul8ModelComponents
 				yield return cell;
 			}
 		}
+		
+		public object Clone(){
+			
+			S8Spreadsheet newSheet = new S8Spreadsheet();
+		    newSheet.RowCount = this.RowCount;
+		    newSheet.ColCount = this.ColCount;
+		    
+		    foreach(S8Spreadsheet.Cell c in this.Cells){
+		    	newSheet.Cells.Add(new Cell{CellType = c.CellType, Row = c.Row, Col = c.Col, Value = c.Value});
+		    }
+			
+			return newSheet;
+		}
+		
+	
 		
 		
 	}

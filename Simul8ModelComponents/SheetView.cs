@@ -70,7 +70,9 @@ namespace Simul8ModelComponents
 		}
 		
 		
-		void UpdateCells(){
+		
+		
+		public void UpdateCells(){
 			
 			int row = 0;
 			S8Spreadsheet sheet = (S8Spreadsheet)this.SelectedVariable.Value;
@@ -114,6 +116,8 @@ namespace Simul8ModelComponents
 			BindToDataSource();
 			
 			this.dataGrid1.TableStyles.Add(style);
+			
+			this.HasUpdates = false;
 			
 			
 		}
@@ -174,5 +178,7 @@ namespace Simul8ModelComponents
 		
 		
 
+		//public void ExternalUpdateOfCells(object sender, 
+		
 	}
 }

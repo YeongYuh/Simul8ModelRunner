@@ -11,8 +11,13 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 using GenericSimulationComponents;
 
@@ -24,7 +29,7 @@ namespace Simul8ModelComponents
 	/// <summary>
 	/// Displays a collection of scenario objects
 	/// </summary>
-	public partial class ScenarioList : UserControl
+	public partial class ScenarioList : UserControl, IEnumerable
 	{
 		public ScenarioSelectedHandler OnScenarioSelected;
 		public RunScenarioEventHandler OnRunScenario;
@@ -33,6 +38,13 @@ namespace Simul8ModelComponents
 		
 		public List<Scenario> Scenarios;
 		
+		public Scenario SelectedScenario{
+			get{
+				
+				Console.WriteLine("current selected row index: {0}", this.dataGridView1.SelectedCells[0].RowIndex.ToString());
+				return (Scenario)this.bindingSource1[this.dataGridView1.SelectedCells[0].RowIndex];
+			}
+		}
 		
 		public ScenarioList()
 		{
@@ -55,21 +67,24 @@ namespace Simul8ModelComponents
 			
 			if(DialogResult.OK == this.folderBrowserDialog1.ShowDialog(this.Parent)){
 				
+				string ScenarioName = GetDefaultScenarioName(this.folderBrowserDialog1.SelectedPath);
+
+				Scenario newScenario = CreateScenario(ScenarioName);
 				
-				string[] files = Directory.GetFiles(this.folderBrowserDialog1.SelectedPath, "*.xs8");
-				
-				string ScenarioName = GetDefaultScenarioName(ref files);
-				
-				Scenario newScenario = CreateScenario(ref files, ScenarioName);
-				
-				AddModelsToScenario(files, newScenario);
+				PopulateScenarioFromDirectory(this.folderBrowserDialog1.SelectedPath, newScenario);
 				
 				SelectFirstScenario();
 				
 			}
 			
 			
-			
+		}
+
+		void PopulateScenarioFromDirectory(string selectedPath, Scenario newScenario)
+		{
+			string[] files = Directory.GetFiles(selectedPath, "*.xs8");
+
+			AddModelsToScenario(files, newScenario);
 		}
 
 		void SelectFirstScenario()
@@ -86,13 +101,13 @@ namespace Simul8ModelComponents
 			}
 		}
 
-		string GetDefaultScenarioName(ref string[] files)
+		string GetDefaultScenarioName(string selectedPath)
 		{
-			string ScenarioName = this.folderBrowserDialog1.SelectedPath.Substring(this.folderBrowserDialog1.SelectedPath.LastIndexOf("\\") + 1);
+			string ScenarioName = this.folderBrowserDialog1.SelectedPath.Substring(selectedPath.LastIndexOf("\\") + 1);
 			return ScenarioName;
 		}
 
-		Scenario CreateScenario(ref string[] files, string ScenarioName)
+		Scenario CreateScenario(string ScenarioName)
 		{
 			Scenario newScenario = new Scenario {
 				Name = ScenarioName,
@@ -198,14 +213,9 @@ namespace Simul8ModelComponents
 			var scenarioToRun = (Scenario)this.bindingSource1[runningIndex];
 			Console.WriteLine(string.Concat("*** SCENARIO: ", scenarioToRun.Name, " ***"));
 			scenarioToRun.OnAllSimulationsComplete += this.ScenarioComplete;
-			
-			//this.BroadcastScenarioSelected(scenarioToRun);
-			
 			scenarioToRun.EnsureModelsAreLoaded();
-			Console.WriteLine("here");
-			//this.BroadCastToRunners(scenarioToRun);
 			scenarioToRun.RunModels();
-			Console.WriteLine("here2");
+			
 		}
 		
 		void BroadcastCompleteEvent(){
@@ -216,6 +226,60 @@ namespace Simul8ModelComponents
 			
 			var selected = (Scenario)this.bindingSource1[this.dataGridView1.CurrentRow.Index];
 			selected.RemoveModel(args.SelectedModel);
+		}
+		
+		
+		/// <summary>
+		/// Iterator pattern for simulation models
+		/// </summary>
+		/// <returns></returns>
+		public IEnumerator GetEnumerator(){
+			
+			foreach(Scenario sc in this.Scenarios){
+				yield return sc;
+			}
+		}
+		
+		public void SaveAs(string saveName){
+			
+			
+			using(FileStream stream = File.Open(saveName, FileMode.Create)){
+				BinaryFormatter bformatter = new BinaryFormatter();
+				bformatter.Serialize(stream, BindingSourceToList());
+			}
+			
+		}
+		
+		public List<Scenario> BindingSourceToList(){
+			List<Scenario> scenarios = new List<Scenario>();
+			
+			foreach(object sc in this.bindingSource1){
+				scenarios.Add((Scenario)sc);
+			}
+			
+			return scenarios;
+			
+		}
+		
+		public void Open(string fileName){
+			
+			
+			using(FileStream stream = File.Open(fileName, FileMode.Open)){
+				BinaryFormatter bformatter = new BinaryFormatter();
+				this.Scenarios = (List<Scenario>)bformatter.Deserialize(stream);
+
+				
+			}
+			
+			foreach(Scenario sc in this.Scenarios){
+				
+				PopulateScenarioFromDirectory(sc.InputDirectory, sc);
+				this.bindingSource1.Add(sc);
+			}
+			
+			SelectFirstScenario();
+			
+			
 		}
 		
 	}

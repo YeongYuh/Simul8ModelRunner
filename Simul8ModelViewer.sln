@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-# SharpDevelop 4.0.0.7070
+# SharpDevelop 4.1.0.7794-beta
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simul8ModelViewer", "Simul8ModelViewer\Simul8ModelViewer.csproj", "{67674EB5-3A83-4901-B4AA-BF475CD1E890}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simul8ModelComponents", "Simul8ModelComponents\Simul8ModelComponents.csproj", "{912927E8-7A82-445D-B51B-0868673ACD5D}"

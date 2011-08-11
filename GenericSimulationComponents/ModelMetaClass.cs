@@ -10,12 +10,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+using System.Runtime.Serialization;
+
 namespace GenericSimulationComponents
 {
 	/// <summary>
 	/// Describes a simulation model and the variables contained within it.
 	/// </summary>
-	public class ModelMetaClass : IEnumerable
+	[Serializable]
+	public class ModelMetaClass : IEnumerable, ISerializable
 	{
 		protected string fileName;
 		protected bool loaded = false;
@@ -111,6 +114,10 @@ namespace GenericSimulationComponents
 		/// <returns></returns>
 		public IEnumerator GetEnumerator(){
 			
+			if(!IsLoaded){
+				this.Load();
+			}
+			
 			foreach(Variable variable in this.Variables){
 				yield return variable;
 			}
@@ -138,7 +145,75 @@ namespace GenericSimulationComponents
 			this.Writer.Write();
 		}
 		
-	
+		#region Equals implementation
+		public override bool Equals(object obj)
+		{
+			ModelMetaClass other = obj as ModelMetaClass;
+			if (other == null)
+				return false;
+			return this.fileName == other.fileName;
+		}
+ 		
+		
+		public override int GetHashCode()
+		{
+			int hashCode = 0;
+			unchecked {
+				if (fileName != null)
+					hashCode += 1000000007 * fileName.GetHashCode();
+				hashCode += 1000000009 * loaded.GetHashCode();
+				if (OnSimulationComplete != null)
+					hashCode += 1000000021 * OnSimulationComplete.GetHashCode();
+			}
+			return hashCode;
+		}
+		
+		public static bool operator ==(ModelMetaClass lhs, ModelMetaClass rhs)
+		{
+			if (ReferenceEquals(lhs, rhs))
+				return true;
+			if (ReferenceEquals(lhs, null) || ReferenceEquals(rhs, null))
+				return false;
+			return lhs.Equals(rhs);
+		}
+		
+		public static bool operator !=(ModelMetaClass lhs, ModelMetaClass rhs)
+		{
+			return !(lhs == rhs);
+		}
+		
+		#endregion
+
+		
+		
+				/// <summary>
+		/// Called by serilalisation interface
+		/// </summary>
+		/// <param name="info"></param>
+		/// <param name="ctxt"></param>
+		public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+		{
+
+		   
+              
+		}
+		
+		
+		/// <summary>
+		/// Searilization constructor
+		/// </summary>
+		/// <param name="info"></param>
+		/// <param name="ctxt"></param>
+		public ModelMetaClass(SerializationInfo info, StreamingContext ctxt)
+		{
+		    //Get the values from info and assign them to the appropriate properties
+		
+		    
+		    
+		    
+		    
+		}
+		
 		
 	}
 }
